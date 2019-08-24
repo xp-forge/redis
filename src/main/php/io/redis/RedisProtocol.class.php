@@ -126,18 +126,19 @@ class RedisProtocol implements Closeable {
   }
 
   /**
-   * Sends a line and reads response
+   * Sends a line
    *
-   * @param  ?string $line Pass NULL to only read
-   * @return var 
+   * @param  string $line Ending "\r\n" added if necessary
+   * @return void 
    * @throws peer.ProtocolException
    */
   public function send($line) {
     $this->conn->isConnected() || $this->connect();
-    if (null !== $line) {
+    if (0 === substr_compare($line, "\r\n", -2)) {
+      $this->conn->write($line);
+    } else {
       $this->conn->write($line."\r\n");
     }
-    return $this->read();
   }
 
   /**
@@ -148,7 +149,7 @@ class RedisProtocol implements Closeable {
    */
   public function receive($timeout= null) {
     $this->conn->isConnected() || $this->connect();
-    return $this->socket->canRead($timeout) ? $this->read() : null;
+    return $this->conn->canRead($timeout) ? $this->read() : null;
   }
 
   /** @return void */

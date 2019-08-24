@@ -115,6 +115,24 @@ class RedisProtocolTest extends TestCase {
   }
 
   #[@test]
+  public function send() {
+    $io= new Channel('');
+
+    $bytes= "*2\r\n\$4\r\nECHO\r\n\$4\r\nTest\r\n";
+    $fixture= new RedisProtocol($io);
+    $fixture->send($bytes);
+    $this->assertEquals($bytes, $io->out);
+  }
+
+  #[@test]
+  public function receive() {
+    $io= new Channel("*3\r\n\$7\r\nmessage\r\n\$7\r\nchannel\r\n\$4\r\ntest\r\n");
+
+    $fixture= new RedisProtocol($io);
+    $this->assertEquals(['message', 'channel', 'test'], $fixture->receive());
+  }
+
+  #[@test]
   public function set() {
     $io= new Channel("+OK\r\n");
 
