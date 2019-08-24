@@ -9,11 +9,11 @@ use util\cmd\Console;
  *
  * - Connect to a Redis Server on localhost
  *   ```
- *   $ xp redis redis://localhost
+ *   $ xp redis localhost
  *   ```
  * - Connect to a password-protected server
  *   ```
- *   $ xp redis redis://secret@redis.server.local
+ *   $ xp redis secret@redis.server.local
  *   ```
  *
  * Type `quit` to end the REPL. Call with `rlwrap` to add readline
@@ -27,7 +27,7 @@ class Runner {
       return 2;
     }
 
-    $proto= new RedisProtocol($args[0]);
+    $proto= new RedisProtocol(strstr($args[0], '://') ? $args[0] : 'redis://'.$args[0]);
     Console::writeLine('Connecting to ', $proto->endpoint());
     try {
       $proto->connect();
