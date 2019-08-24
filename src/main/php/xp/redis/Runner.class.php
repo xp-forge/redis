@@ -4,6 +4,21 @@ use io\redis\RedisProtocol;
 use peer\{ProtocolException, ConnectException, AuthenticationException};
 use util\cmd\Console;
 
+/**
+ * Redis CLI
+ *
+ * - Connect to a Redis Server on localhost
+ *   ```
+ *   $ xp redis redis://localhost
+ *   ```
+ * - Connect to a password-protected server
+ *   ```
+ *   $ xp redis redis://secret@redis.server.local
+ *   ```
+ *
+ * Type `quit` to end the REPL. Call with `rlwrap` to add readline
+ * functionality.
+ */
 class Runner {
 
   public static function main($args) {
