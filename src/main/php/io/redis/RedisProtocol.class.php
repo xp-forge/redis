@@ -88,9 +88,9 @@ class RedisProtocol implements Closeable {
       case '$': // bulk strings
         if (-1 === ($l= (int)substr($r, 1))) return null;
         $r= '';
-        do {
+        while (strlen($r) < $l && !$this->conn->eof()) {
           $r.= $this->conn->readBinary(min(8192, $l - strlen($r)));
-        } while (strlen($r) < $l && !$this->conn->eof());
+        }
         $this->conn->readBinary(2);  // "\r\n"
         return $r;
 
