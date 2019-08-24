@@ -24,6 +24,13 @@ class Channel extends Socket {
     return $this->connected;
   }
 
+  public function canRead() {
+    if (!$this->connected) {
+      throw new SocketException('Select failed: Connection closed');
+    }
+    return null !== $this->in;
+  }
+
   public function readLine($maxLen= 4096) {
     if (!$this->connected) {
       throw new SocketException('Read of '.$maxLen.' bytes failed: Connection closed');
