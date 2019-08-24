@@ -140,6 +140,17 @@ class RedisProtocol implements Closeable {
     return $this->read();
   }
 
+  /**
+   * Waits to receive a message, returning NULL if the timeout is reached.
+   *
+   * @param  ?float $timeout Pass NULL for no timeout
+   * @return var
+   */
+  public function receive($timeout= null) {
+    $this->conn->isConnected() || $this->connect();
+    return $this->socket->canRead($timeout) ? $this->read() : null;
+  }
+
   /** @return void */
   public function close() {
     if ($this->conn->isConnected()) {
