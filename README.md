@@ -21,4 +21,4 @@ $protocol->command('SET', 'key', 'value');
 $value= $protocol->command('GET', 'key');
 ``` 
 
-To use authentication, pass it as username in the connection string, e.g. *redis://secret@localhost*.
+The port defaults to 6379 and can be changed by adding it as follows: *redis://localhost:16379*. To use authentication, pass it as username in the connection string, e.g. *redis://secret@localhost*.
