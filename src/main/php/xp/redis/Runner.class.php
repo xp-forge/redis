@@ -13,7 +13,7 @@ use util\cmd\Console;
  *   ```
  * - Connect to a password-protected server
  *   ```
- *   $ xp redis secret@redis.server.local
+ *   $ xp redis secret@redis.example.com
  *   ```
  *
  * Type `quit` to end the REPL. Call with `rlwrap` to add readline
