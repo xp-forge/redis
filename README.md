@@ -8,7 +8,7 @@ Redis protocol
 [![Supports PHP 7.0+](https://raw.githubusercontent.com/xp-framework/web/master/static/php-7_0plus.png)](http://php.net/)
 [![Latest Stable Version](https://poser.pugx.org/xp-forge/redis/version.png)](https://packagist.org/packages/xp-forge/redis)
 
-[Redis](https://redis.io/) protocol implementation.
+[Redis protocol](https://redis.io/topics/protocol) implementation.
 
 Example
 -------
@@ -18,7 +18,22 @@ use io\redis\RedisProtocol;
 
 $protocol= new RedisProtocol('redis://localhost');
 $protocol->command('SET', 'key', 'value');
+
 $value= $protocol->command('GET', 'key');
 ``` 
 
-To use authentication, pass it as username in the connection string, e.g. *redis://secret@localhost*.
+The port defaults to 6379 and can be changed by adding it as follows: *redis://localhost:16379*. To use authentication, pass it as username in the connection string, e.g. *redis://secret@localhost*.
+
+Pub/Sub
+-------
+
+```php
+use io\redis\RedisProtocol;
+
+$protocol= new RedisProtocol('redis://localhost');
+$protocol->command('SUBSCRIBE', 'messages');
+
+while ($message= $protocol->receive()) {
+  Console::writeLine('Received ', $message);
+}
+``` 
