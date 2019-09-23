@@ -40,6 +40,9 @@ class RedisProtocol implements Closeable {
     }
   }
 
+  /** @return peer.Socket */
+  public function socket() { return $this->conn; }
+
   /** @return ?util.Secret */
   public function authentication() { return $this->auth; }
 
