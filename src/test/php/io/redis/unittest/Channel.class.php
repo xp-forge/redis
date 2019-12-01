@@ -24,7 +24,7 @@ class Channel extends Socket {
     return $this->connected;
   }
 
-  public function canRead() {
+  public function canRead($timeout= null) {
     if (!$this->connected) {
       throw new SocketException('Select failed: Connection closed');
     }
