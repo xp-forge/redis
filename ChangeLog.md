@@ -3,6 +3,13 @@ Redis protocol change log
 
 ## ?.?.? / ????-??-??
 
+## 1.0.0 / 2019-12-01
+
+* Implemented xp-framework/rfc#334: Drop PHP 5.6. The minimum required
+  PHP version is now 7.0.0!
+  (@thekid)
+* Made compatible with XP 10 - @thekid
+
 ## 0.3.0 / 2019-09-23
 
 * Added `io.redis.RedisProtocol::socket()` accessor which returns the
