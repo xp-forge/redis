@@ -11,7 +11,7 @@ use util\URI;
  * Redis protocol implementation
  *
  * @see   https://redis.io/topics/protocol
- * @test  xp://web.session.redis.unittest.RedisProtocolTest
+ * @test  io.redis.unittest.RedisProtocolTest
  */
 class RedisProtocol implements Closeable {
   private $conn, $auth;
