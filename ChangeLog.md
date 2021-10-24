@@ -3,6 +3,10 @@ Redis protocol change log
 
 ## ?.?.? / ????-??-??
 
+## 1.0.2 / 2021-10-24
+
+* Made compatible with XP 11 - @thekid
+
 ## 1.0.1 / 2020-04-10
 
 * Made compatible with `xp-forge/uri` version 2.0.0 - @thekid
