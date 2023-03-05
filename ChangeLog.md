@@ -3,6 +3,8 @@ Redis protocol change log
 
 ## ?.?.? / ????-??-??
 
+* Merged PR #3: Migrate to new testing library - @thekid
+
 ## 1.0.2 / 2021-10-24
 
 * Made compatible with XP 11 - @thekid
