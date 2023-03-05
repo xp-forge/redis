@@ -2,7 +2,7 @@
 
 use io\redis\RedisProtocol;
 use peer\{AuthenticationException, ConnectException, ProtocolException};
-use unittest\{Assert, Expect, Test, Values};
+use test\{Assert, Expect, Test, Values};
 use util\Secret;
 
 class RedisProtocolTest {
