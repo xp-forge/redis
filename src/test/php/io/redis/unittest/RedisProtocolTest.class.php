@@ -81,6 +81,14 @@ class RedisProtocolTest {
   }
 
   #[Test]
+  public function socket() {
+    $io= new Channel();
+    $fixture= new RedisProtocol($io);
+
+    Assert::equals($io, $fixture->socket());
+  }
+
+  #[Test]
   public function automatically_connects_if_necessary() {
     $io= new Channel("+OK\r\n");
     $fixture= new RedisProtocol($io);
@@ -120,6 +128,16 @@ class RedisProtocolTest {
     $fixture= new RedisProtocol($io);
     $fixture->send($bytes);
     Assert::equals($bytes, $io->out);
+  }
+
+  #[Test]
+  public function trailing_crlf_appended_automatically() {
+    $io= new Channel('');
+
+    $bytes= "*2\r\n\$4\r\nECHO\r\n\$4\r\nTest";
+    $fixture= new RedisProtocol($io);
+    $fixture->send($bytes);
+    Assert::equals($bytes."\r\n", $io->out);
   }
 
   #[Test]
