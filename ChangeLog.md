@@ -3,6 +3,8 @@ Redis protocol change log
 
 ## ?.?.? / ????-??-??
 
+## 1.3.0 / 2026-04-26
+
 * Made compatible with `xp-framework/networking` version 11.0 - @thekid
 * Added PHP 8.6 to the test matrix - @thekid
 
