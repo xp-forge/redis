@@ -3,6 +3,9 @@ Redis protocol change log
 
 ## ?.?.? / ????-??-??
 
+* Made compatible with `xp-framework/networking` version 11.0 - @thekid
+* Added PHP 8.6 to the test matrix - @thekid
+
 ## 1.2.0 / 2025-01-19
 
 * Made this library compatible with `xp-forge/uri`, version 3.0+ (@thekid)
